@@ -18,7 +18,8 @@ const uploadCloundinary= async (localFilePath) =>{
       const response=await cloudinary.uploader.upload(localFilePath,{
             resourse_type:"auto"
         })
-console.log("upload file sucessfuly on cloundinary",response.url);
+        fs.unlinkSync(localFilePath)
+console.log("upload file sucessfuly on cloundinary",response);
 return response
     } catch (error) {
         fs.unlinkSync(localFilePath) //remove local save temporay file when opreation faild
